@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def initial_graph(request):
+    return render(request, "ModernWGC_ui/index.html")
