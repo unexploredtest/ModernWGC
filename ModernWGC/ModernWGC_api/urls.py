@@ -1,10 +1,7 @@
 from django.urls import path
 
-from django.http import HttpResponse
-
-def dummy(request):
-    return HttpResponse("Dummy")
+from . import views
 
 urlpatterns = [
-    path('', dummy, name="ModernWGC-api"),
+    path('', views.graph, name="ModernWGC-api"),
 ]

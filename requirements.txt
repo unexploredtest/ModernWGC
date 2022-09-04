@@ -1,1 +1,7 @@
 django==4.1.*
+
+
+# ModernWGC_api dependencies
+djangorestframework
+mpld3
+numexpr
