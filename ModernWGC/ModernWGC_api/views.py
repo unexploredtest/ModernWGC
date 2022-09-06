@@ -34,9 +34,10 @@ def figureGenerator(functionName: str) -> Figure:
     ax.spines['top'].set_color('none')
     ax.xaxis.set_ticks_position('bottom')
     ax.yaxis.set_ticks_position('left')
+    ax.grid()
     
     ax.plot(x,y, 'r')
     
     return fig
 
-sampleGraph = mpld3.fig_to_html(figureGenerator("x**2"))
+sampleGraph = mpld3.fig_to_dict(figureGenerator("x**2"))
