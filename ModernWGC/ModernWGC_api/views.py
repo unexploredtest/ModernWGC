@@ -1,12 +1,21 @@
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+@api_view(['GET'])
+def index_page(request):
+    return_data = {
+        "error" : "0",
+        "message" : "Successful",
+    }
+    return Response(return_data)
 
 @api_view(["POST"])
 def graph(request):
     try:
+        functionName = request.headers.get("functionName")
+        graphData = mpld3.fig_to_dict(figureGenerator(functionName))
         response = {
-            "graph" : sampleGraph
+            "graph" : graphData
         }
     except Exception as e:
         response = {
@@ -39,5 +48,3 @@ def figureGenerator(functionName: str) -> Figure:
     ax.plot(x,y, 'r')
     
     return fig
-
-sampleGraph = mpld3.fig_to_dict(figureGenerator("x**2"))
