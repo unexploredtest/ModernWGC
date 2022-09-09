@@ -1,9 +1,10 @@
 const graphContainer = document.querySelector("div#graph-container")
+const graphInput = document.querySelector("input.graph-input")
 const graphButton = document.querySelector("button.graph-button")
 const API_URL = window.location.href + "api/"
 
 graphButton.addEventListener("click", e => {
-    fetch(API_URL, {method: "post", headers: {"functionName":"x**2"}}).then(response => {
+    fetch(API_URL, {method: "post", headers: {"functionName":graphInput.value}}).then(response => {
         return response.json()
     })
     .catch(error => {
