@@ -1,4 +1,6 @@
 const API_URL = window.location.href + "api/"
+let graph_width = right_graph_side.offsetWidth
+let graph_height = right_graph_side.offsetHeight 
 
 calculate_button.addEventListener("click", e => {
     fetch(API_URL, {method: "post", headers: {"functionName":input_field.value}}).then(response => {
