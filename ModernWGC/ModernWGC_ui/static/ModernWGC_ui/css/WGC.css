@@ -20,7 +20,7 @@
 }
 
 body{
-    color: white;
+    color: black;
     background-color: rgb(31, 31, 31);
     /* overflow: hidden; */
 }
@@ -361,7 +361,7 @@ body{
 
 
 
-/* [] Animations */
+/* [A] Animations */
 
 @keyframes flip_arrow_close {
     0%{
@@ -486,7 +486,7 @@ Block List:
 [6] Right-graph-side Style
 
 
-[] Animations
+[A] Animations
 */
 
 

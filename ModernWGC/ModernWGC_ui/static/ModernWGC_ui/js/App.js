@@ -27,6 +27,7 @@ close_input_section_button.addEventListener("click", async function(){ // For cl
     reset_animation(arrow_svg)
     // Maybe it was best yo use the add class method for the arrow, but whatever...
     if (left_section_is_closed === false){
+        body.style.overflow = "hidden"
         arrow_svg.style.transform = "rotate(0deg)"
         arrow_svg.style.animation = "flip_arrow_close forwards"
         arrow_svg.style.animationDuration = "200ms"
@@ -44,10 +45,11 @@ close_input_section_button.addEventListener("click", async function(){ // For cl
         left_input_section.classList.remove("close-left-section")
         save_graph.classList.remove("save-graph-on-close")
         key_pad.classList.remove("key-pad-on-closed")
+        await sleep (500)
+        body.style.overflow = "visible"
         left_section_is_closed = false
     }
 });
-
 
 // --- Used to fetch cursor'c position
 // input_field.addEventListener('keyup', e => {

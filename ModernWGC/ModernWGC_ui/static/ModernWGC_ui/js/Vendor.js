@@ -1,3 +1,6 @@
+//--------- Body:
+let body = document.body
+//--------- Nav-bar:
 let check_box = document.getElementById("check-box")
 //--------- Main section:
 let main_section = document.getElementById("main-section")
