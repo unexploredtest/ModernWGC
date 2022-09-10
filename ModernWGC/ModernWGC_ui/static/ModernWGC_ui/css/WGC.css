@@ -22,7 +22,7 @@
 body{
     color: white;
     background-color: rgb(31, 31, 31);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 
@@ -130,7 +130,8 @@ body{
 
 /* [5] Left-input-side Style */
 .left-input-side{
-    height: 100%;
+    /* used to be height: 100%, but now to stop the arrow from overlapping with the nav-bar.. this was changed to min-height */
+    min-height: 350px; 
     position: relative;
     border-right: 1px rgb(177, 177, 177, 0.4) solid;
     /* border-top: 1px rgb(220, 20, 60, 0.5) solid; */

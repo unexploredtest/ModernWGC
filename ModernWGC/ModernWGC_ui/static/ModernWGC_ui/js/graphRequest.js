@@ -1,29 +1,32 @@
 const API_URL = window.location.href + "api/"
-let graph_width = right_graph_side.offsetWidth
-let graph_height = right_graph_side.offsetHeight 
+let graph_width = right_graph_side.clientWidth
+let graph_height = right_graph_side.clientHeight
 
 calculate_button.addEventListener("click", e => {
-    fetch(API_URL, {method: "post", headers: {"functionName":input_field.value}}).then(response => {
-        return response.json()
-    })
-    .catch(error => {
-        console.error(error)
-    })
-    .then(jsonGraph => {
-        // clearing the previous graph
-        right_graph_side.innerHTML = ""
-
-        // enabling the move button by default
-        zoomPlugin = jsonGraph.graph.plugins.find(element => {
-            return (element.type == "zoom")
+    if (input_field.value == ""){}
+    else{
+        fetch(API_URL, {method: "post", headers: {"functionName":input_field.value}}).then(response => {
+            return response.json()
         })
-        zoomPlugin.enabled = true
-        
-        drawGraph("right-graph-side", jsonGraph.graph)
-    })
-    .catch(error => {
-        console.error(error)
-    })
+        .catch(error => {
+            console.error(error)
+        })
+        .then(jsonGraph => {
+            // clearing the previous graph
+            right_graph_side.innerHTML = ""
+
+            // enabling the move button by default
+            zoomPlugin = jsonGraph.graph.plugins.find(element => {
+                return (element.type == "zoom")
+            })
+            zoomPlugin.enabled = true
+            
+            drawGraph("right-graph-side", jsonGraph.graph)
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    }
 })
 
 function mpld3_load_lib(url, callback) {
@@ -63,5 +66,5 @@ function drawGraph(id, graphJSON) {
     }
 }
 
-const defaultGraph = {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [0.0, 1.0], "ylim": [0.0, 1.0], "xdomain": [0.0, 1.0], "ydomain": [0.0, 1.0], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el11978139690472026416", "lines": [], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {}, "id": "el11978139690926006624", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": true}, {"type": "boxzoom", "button": true, "enabled": false}]} 
+let defaultGraph = {"width": graph_width, "height": graph_height, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [0.0, 1.0], "ylim": [0.0, 1.0], "xdomain": [0.0, 1.0], "ydomain": [0.0, 1.0], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el11978139690472026416", "lines": [], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {}, "id": "el11978139690926006624", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": true}, {"type": "boxzoom", "button": true, "enabled": false}]} 
 drawGraph("right-graph-side", defaultGraph)

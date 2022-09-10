@@ -86,4 +86,16 @@ check_box.addEventListener('change', function() {
     } else {
       console.log("Checkbox is not checked..");
     }
-  });
+});
+
+
+// --- On window resize, the graph should be responsive and resize.
+window.onresize = function(){resize_graph()}
+function resize_graph(){
+    graph_width = right_graph_side.clientWidth
+    graph_height = right_graph_side.clientHeight
+    right_graph_side.innerHTML = ""
+    defaultGraph = {"width": graph_width, "height": graph_height, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [0.0, 1.0], "ylim": [0.0, 1.0], "xdomain": [0.0, 1.0], "ydomain": [0.0, 1.0], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el11978139690472026416", "lines": [], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {}, "id": "el11978139690926006624", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": true}, {"type": "boxzoom", "button": true, "enabled": false}]}
+    drawGraph("right-graph-side", defaultGraph)
+    console.log("Resized")
+}

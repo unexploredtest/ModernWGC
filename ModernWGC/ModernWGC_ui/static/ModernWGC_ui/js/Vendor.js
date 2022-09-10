@@ -1,4 +1,6 @@
 let check_box = document.getElementById("check-box")
+//--------- Main section:
+let main_section = document.getElementById("main-section")
 //--------- Left section related:
 let left_input_section = document.getElementById("left-input-section")
 let close_input_section_button = document.getElementById("close-left-input-side")
