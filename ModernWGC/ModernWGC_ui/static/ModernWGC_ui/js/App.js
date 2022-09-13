@@ -26,6 +26,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms))
 
 closeInputSectionButton.addEventListener("click", async function() { // For closing the left input section.
     resetAnimation(arrowSvg)
+    resizeCurrentGraph()
     // Maybe it was best to use the add class method for the arrow, but whatever...
     if (leftSectionisClosed === false) {
         body.style.overflow = "hidden"
@@ -95,6 +96,15 @@ checkBox.addEventListener('change', function() {
 // --- On window resize, the graph should be responsive and resize.
 window.onresize = function(){resizeCurrentGraph()}
 function resizeCurrentGraph() {
+    updateGraphSize(currentGraph)
+    rightGraphSide.innerHTML = ""
+    drawGraph("right-graph-side", currentGraph)
+    console.log("Resized")
+}
+
+// --- On menu collapse, the grpah should resize.
+async function resizeCurrentGraph() {
+    await sleep (200) // --- Due to animation Delay.
     updateGraphSize(currentGraph)
     rightGraphSide.innerHTML = ""
     drawGraph("right-graph-side", currentGraph)
