@@ -19,14 +19,13 @@ const allKeysObject = {
 }
 const operationsWithParentheses = ["sin", "cos", "tan", "log", "cot", "s-root"]
 let leftSectionisClosed = false // This checks whether the input section is closed or open.
-let cursorPos
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
 
-closeInputSectionButton.addEventListener("click", async function() { // For closing the left input section.
+closeLeftMenu.addEventListener("click", async function() { // This closes the left menu (Input Menu).
     resetAnimation(arrowSvg)
-    resizeCurrentGraph()
+    resizeCurrentGraph() // Resize graph on menu collapse.
     // Maybe it was best to use the add class method for the arrow, but whatever...
     if (leftSectionisClosed === false) {
         body.style.overflow = "hidden"
@@ -53,23 +52,16 @@ closeInputSectionButton.addEventListener("click", async function() { // For clos
     }
 });
 
-// --- Used to fetch cursor'c position
-// inputField.addEventListener('keyup', e => {
-//     console.log('Caret at: ', e.target.selectionStart)
-// })
 
-//--- Adding event listeners to all keys
+//--- Adding event listeners to all keys.
 for (let i = 0; i < allKeys.length; i++) {
     allKeys[i].addEventListener('click', function() {keyListener(allKeys[i].id), false} );
 }
 
 
-
 function keyListener(target) {
     inputField.focus()
     cursorPos = inputField.selectionStart
-
-    // inputField.value = inputField.value + allKeysObject[target]
     inputField.value = inputField.value.substr(0, cursorPos) + allKeysObject[target] + inputField.value.substr(cursorPos);
     console.log(cursorPos)
 }

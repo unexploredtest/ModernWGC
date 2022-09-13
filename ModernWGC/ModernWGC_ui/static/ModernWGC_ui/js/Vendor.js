@@ -6,7 +6,7 @@ const checkBox = document.getElementById("check-box")
 const mainSection = document.getElementById("main-section")
 //--------- Left section related:
 const leftInputSection = document.getElementById("left-input-section")
-const closeInputSectionButton = document.getElementById("close-left-input-side")
+const closeLeftMenu = document.getElementById("close-left-input-side")
 const arrowSvg = document.getElementById("arrow-svg")
 const inputField = document.getElementById("input_field")
 const saveGraph = document.getElementById("save-graph")
