@@ -1,6 +1,6 @@
-let left_section_is_closed = false // This checks whether the input section is closed or open.
-let cursorPos
-let all_keys_dict = {
+const left_section_is_closed = false // This checks whether the input section is closed or open.
+const cursorPos
+const all_keys_dict = {
     "sin" : "sin(",
     "cos" : "cos(",
     "open-parenthesis" : "(",
@@ -19,7 +19,7 @@ let all_keys_dict = {
     "factorial" : "!",
     "s-root" : "√(",
 }
-let operations_with_parentheses = ["sin", "cos", "tan", "log", "cot", "s-root"]
+const operations_with_parentheses = ["sin", "cos", "tan", "log", "cot", "s-root"]
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 
