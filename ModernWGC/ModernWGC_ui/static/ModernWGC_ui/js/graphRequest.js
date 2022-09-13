@@ -1,6 +1,10 @@
 const API_URL = window.location.href + "api/"
-let graphWidth = rightGraphSide.clientWidth
-let graphHeight = rightGraphSide.clientHeight
+const defaultGraph = {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [0.0, 1.0], "ylim": [0.0, 1.0], "xdomain": [0.0, 1.0], "ydomain": [0.0, 1.0], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el11978139690472026416", "lines": [], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {}, "id": "el11978139690926006624", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": true}, {"type": "boxzoom", "button": true, "enabled": false}]} 
+
+let currentGraph = defaultGraph
+updateGraphSize(currentGraph)
+
+drawGraph("right-graph-side", currentGraph)
 
 calculateButton.addEventListener("click", e => {
     if (inputField.value == ""){}
@@ -11,17 +15,21 @@ calculateButton.addEventListener("click", e => {
         .catch(error => {
             console.error(error)
         })
-        .then(jsonGraph => {
-            // clearing the previous graph
-            rightGraphSide.innerHTML = ""
+        .then(jsonResponse => {
 
+            currentGraph = jsonResponse.graph
+            updateGraphSize(currentGraph)
+        
             // enabling the move button by default
-            zoomPlugin = jsonGraph.graph.plugins.find(element => {
+            zoomPlugin = currentGraph.plugins.find(element => {
                 return (element.type == "zoom")
             })
             zoomPlugin.enabled = true
+
+            // clearing the previous graph
+            rightGraphSide.innerHTML = ""
             
-            drawGraph("right-graph-side", jsonGraph.graph)
+            drawGraph("right-graph-side", currentGraph)
         })
         .catch(error => {
             console.error(error)
@@ -66,6 +74,9 @@ function drawGraph(id, graphJSON) {
     }
 }
 
+function updateGraphSize(graphObject) {
+    graphObject.width = rightGraphSide.clientWidth
+    graphObject.height = rightGraphSide.clientHeight
+}
+
 rightGraphSide.innerHTML = ""
-let defaultGraph = {"width": graphWidth, "height": graphHeight, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [0.0, 1.0], "ylim": [0.0, 1.0], "xdomain": [0.0, 1.0], "ydomain": [0.0, 1.0], "xscale": "linear", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}, {"position": "left", "nticks": 6, "tickvalues": null, "tickformat_formatter": "", "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": true, "color": "#B0B0B0", "dasharray": "none", "alpha": 1.0}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el11978139690472026416", "lines": [], "paths": [], "markers": [], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {}, "id": "el11978139690926006624", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": true}, {"type": "boxzoom", "button": true, "enabled": false}]} 
-drawGraph("right-graph-side", defaultGraph)
