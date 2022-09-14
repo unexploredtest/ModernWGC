@@ -12,7 +12,7 @@ def index_page(request):
     return Response(return_data)
 
 @api_view(["POST"])
-def graph(request):
+def graphFunction(request):
     try:
         function_name = request.headers.get("functionName")
         graph_figure = graph.figure_generator(function_name)
