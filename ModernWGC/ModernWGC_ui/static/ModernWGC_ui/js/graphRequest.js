@@ -8,8 +8,8 @@ drawGraph("right-graph-side", currentGraph)
 
 calculateButton.addEventListener("click", e => {
     if (inputField.value == ""){}
-    else{
-        fetch(API_URL, {method: "post", headers: {"functionName":input_field.value}}).then(response => {
+    else {
+        fetch(API_URL, {method: "post", headers: {"functionName":inputField.value}}).then(response => {
             return response.json()
         })
         .catch(error => {

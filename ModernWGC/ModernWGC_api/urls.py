@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.graph, name="ModernWGC-api"),
+    path('', views.graphFunction, name="ModernWGC-api"),
 ]
