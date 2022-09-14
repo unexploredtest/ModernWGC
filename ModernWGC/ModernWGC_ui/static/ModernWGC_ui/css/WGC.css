@@ -1,4 +1,4 @@
-/* [1] Fonts */
+/* [F] Fonts */
 @font-face {
     src: url(./Fonts/Josefin-Sans/JosefinSans-Bold.ttf);
     font-family: Josefin-Bold;
@@ -12,7 +12,7 @@
     font-family: Roboto-Medium;
 }
 
-/* [2] Global Style */
+/* [1] Global Style */
 *{
     margin: 0;
     padding: 0;
@@ -21,10 +21,74 @@
 
 body{
     color: black;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(19, 23, 26);
     /* overflow: hidden; */
 }
 
+
+/* [2] Page loading Style */
+.page-loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.spinner {
+    width: 44.8px;
+    height: 44.8px;
+    animation: page-loading 2s infinite ease;
+    transform-style: preserve-3d;
+}
+ 
+.spinner > div {
+    background-color: rgb(220, 20, 60, 0.2);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    border: 2.2px solid crimson;
+}
+ 
+.spinner div:nth-of-type(1) {
+    transform: translateZ(-22.4px) rotateY(180deg);
+}
+ 
+.spinner div:nth-of-type(2) {
+    transform: rotateY(-270deg) translateX(50%);
+    transform-origin: top right;
+}
+ 
+.spinner div:nth-of-type(3) {
+    transform: rotateY(270deg) translateX(-50%);
+    transform-origin: center left;
+}
+ 
+.spinner div:nth-of-type(4) {
+    transform: rotateX(90deg) translateY(-50%);
+    transform-origin: top center;
+}
+ 
+.spinner div:nth-of-type(5) {
+    transform: rotateX(-90deg) translateY(50%);
+    transform-origin: bottom center;
+}
+ 
+.spinner div:nth-of-type(6) {
+    transform: translateZ(22.4px);
+}
+ 
+.hide-page-loading{
+    transition: opacity 150ms ease-in-out;
+    opacity: 0;
+}
 
 /* [3] Nav-Bar Style */
 .nav-bar{
@@ -241,7 +305,6 @@ body{
     border: 2px rgb(220, 20, 60, 0.4) solid;
 }
 
-
 .calculate{
     font-family: Roboto-Medium;
     width: 50%;
@@ -279,7 +342,8 @@ body{
 .show-pregress-bar{
     display: block;
 }
-/* This is the button */
+
+/* The button responsible for closing the left menu. */
 .close-left-input-side{ 
     position: absolute;
     display: flex;
@@ -352,7 +416,7 @@ body{
 .right-graph-side{
     height: 100%;
     flex: 3;
-    background-color: rgb(31, 31, 31);
+    background-color: rgb(19, 23, 26);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -361,67 +425,6 @@ body{
     opacity: 0.8;
 }
 
-.page-loading{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 100;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.spinner {
-    width: 44.8px;
-    height: 44.8px;
-    animation: page-loading 2s infinite ease;
-    transform-style: preserve-3d;
-}
- 
-.spinner > div {
-    background-color: rgb(220, 20, 60, 0.2);
-    height: 100%;
-    position: absolute;
-    width: 100%;
-    border: 2.2px solid crimson;
-}
- 
-.spinner div:nth-of-type(1) {
-    transform: translateZ(-22.4px) rotateY(180deg);
-}
- 
-.spinner div:nth-of-type(2) {
-    transform: rotateY(-270deg) translateX(50%);
-    transform-origin: top right;
-}
- 
-.spinner div:nth-of-type(3) {
-    transform: rotateY(270deg) translateX(-50%);
-    transform-origin: center left;
-}
- 
-.spinner div:nth-of-type(4) {
-    transform: rotateX(90deg) translateY(-50%);
-    transform-origin: top center;
-}
- 
-.spinner div:nth-of-type(5) {
-    transform: rotateX(-90deg) translateY(50%);
-    transform-origin: bottom center;
-}
- 
-.spinner div:nth-of-type(6) {
-    transform: translateZ(22.4px);
-}
- 
-.hide-page-loading{
-    transition: opacity 150ms ease-in-out;
-    opacity: 0;
-}
 /* [A] Animations */
 
 @keyframes flip_arrow_close {
@@ -552,17 +555,19 @@ body{
 }
 
 
+
+
+
+
 /* 
 Block List:
-[1] Fonts
-[2] Global Style
+[1] Global Style
+[2] Page loading Style
 [3] Nav-bar Style
 [4] Main-section Style
 [5] Left-input-side Style
 [6] Right-graph-side Style
 
-
+[F] Fonts
 [A] Animations
 */
-
-
