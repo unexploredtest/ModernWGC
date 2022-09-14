@@ -75,8 +75,13 @@ function drawGraph(id, graphJSON) {
 }
 
 function updateGraphSize(graphObject) {
-    graphObject.width = rightGraphSide.clientWidth
-    graphObject.height = rightGraphSide.clientHeight
+    let width = rightGraphSide.clientWidth
+    let height = rightGraphSide.clientHeight
+    if (height < 351){
+        height = 350
+    }
+    graphObject.width = width
+    graphObject.height = height
 }
 
 rightGraphSide.innerHTML = ""

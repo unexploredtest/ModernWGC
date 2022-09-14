@@ -38,6 +38,9 @@ closeLeftMenu.addEventListener("click", async function() { // This closes the le
         body.style.overflow = "hidden"
         arrowSvg.style.transform = "rotate(0deg)"
         arrowSvg.style.animation = "flip_arrow_close forwards"
+        closeLeftMenu.style.right = "-55px"
+        closeLeftMenu.style.paddingRight = "0px"
+        closeLeftMenu.style.paddingLeft = "3px"
         arrowSvg.style.animationDuration = "200ms"
         arrowSvg.style.animationDelay = "200ms"
         leftInputSection.classList.add("close-left-section")
@@ -48,6 +51,9 @@ closeLeftMenu.addEventListener("click", async function() { // This closes the le
     else {
         arrowSvg.style.transform = "rotate(180deg)"
         arrowSvg.style.animation = "flip_arrow_open forwards"
+        closeLeftMenu.style.right = "-23px"
+        closeLeftMenu.style.paddingLeft = "0px"
+        closeLeftMenu.style.paddingRight = "3px"
         arrowSvg.style.animationDuration = "200ms"
         arrowSvg.style.animationDelay = "200ms"
         leftInputSection.classList.remove("close-left-section")
