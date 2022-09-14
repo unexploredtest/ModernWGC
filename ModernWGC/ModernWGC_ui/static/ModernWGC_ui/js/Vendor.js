@@ -2,6 +2,8 @@
 const body = document.body
 //--------- Nav-bar:
 const checkBox = document.getElementById("check-box")
+//--------- Page loading:
+const pageLoader = document.getElementById("page-loading")
 //--------- Main section:
 const mainSection = document.getElementById("main-section")
 //--------- Left section related:

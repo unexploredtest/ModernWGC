@@ -23,6 +23,13 @@ let leftSectionisClosed = false // This checks whether the input section is clos
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
 
+//--- Removes page loaing animation.
+setTimeout(async() => {
+pageLoader.classList.add("hide-page-loading")
+await sleep (151)
+pageLoader.style.display = "none"
+}, 1500)
+
 closeLeftMenu.addEventListener("click", async function() { // This closes the left menu (Input Menu).
     resetAnimation(arrowSvg)
     resizeCurrentGraph() // Resize graph on menu collapse.
