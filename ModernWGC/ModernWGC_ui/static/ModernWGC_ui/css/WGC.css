@@ -383,19 +383,21 @@ body{
 }
 
 .save-graph{
+    background-image: url("./SVG/save.svg");
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
     color: rgb(179, 179, 179);
     display: flex;
     align-items: center;
-    font-family: Josefin-Regular;
-    font-size: 14px;
     position: absolute;
-    right: -82px;
-    top: 0;
-    width: 80px;
-    height: 25px;
-    padding-left: 2px;
-    border-bottom-right-radius:5px;
-    background-color: black;
+    right: -72px;
+    top: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(22, 22, 22);
+    border: 1px rgb(128, 128, 128, 0.2) solid;
     transition: 400ms;
     transition-delay: 10ms;
     cursor: pointer;
@@ -403,11 +405,11 @@ body{
 }
 
 .save-graph:hover{
-    color: crimson;
+    border: 1px rgb(220, 20, 60, 0.5) solid;
 }
 
 .save-graph-on-close{
-    right: 100px;
+    /* right: 200px; */
 }
 
 /* [6] Left-input-side Style */

@@ -37,4 +37,3 @@ const factorialKey = document.getElementById("factorial")
 const s_rootKey = document.getElementById("s-root")
 // -------- Right section related:
 const rightGraphSide = document.getElementById("right-graph-side")
-
