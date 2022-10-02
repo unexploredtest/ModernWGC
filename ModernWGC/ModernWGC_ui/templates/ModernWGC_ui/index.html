@@ -1,21 +1,86 @@
 {% load static %}
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'ModernWGC_ui/css/main.css' %}">
-    <script defer src="{% static 'ModernWGC_ui/js/syntaxChecker.js' %}"></script>
-    <script defer src="{% static 'ModernWGC_ui/js/graphRequest.js' %}"></script>
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'ModernWGC_ui/css/SVG/favicon.svg' %}">
+    <link rel="stylesheet" href="{% static 'ModernWGC_ui/css/WGC.css' %}">
+    <title>⧽ WebGraphingCalculator ⧼</title>
 </head>
-<body>
-    <h1>Initial template</h1>
-    <div id="graph-container">
 
+<body>
+
+    <div class="nav-bar">
+        <div class="title"><a>Modern</a>WGC</div>
+        <div class="right-side">
+            <input type="checkbox" id="check-box" class="switch-theme" checked>
+            <div class="about">About</div>
+        </div>
     </div>
-    <input class="graph-input" type="text">
-    <button class="graph-button">Graph</button>
+
+    <div class="main-section" id="main-section">
+        <div class="left-input-side" id="left-input-section">
+            <div class="key-pad" id="key-pad">
+                <div class="key-pad-rows">
+                    <div class="key" id="sin">Sin</div>
+                    <div class="key" id="cos">Cos</div>
+                    <div class="key" id="open-parenthesis">(</div>
+                    <div class="key" id="close-parenthesis">)</div>
+                    <div class="key" id="theta">θ</div>
+                    <div class="key" id="e">e</div>
+                </div>
+                <div class="key-pad-rows">
+                    <div class="key" id="Pi" style="font-size: 20px ;">π</div>
+                    <div class="key" id="plus">+</div>
+                    <div class="key" id="tan">Tan</div>
+                    <div class="key" id="minus">-</div>
+                    <div class="key" id="log">log</div>
+                    <div class="key" id="multiply">×</div>
+                </div>
+                <div class="key-pad-rows">
+                    <div class="key" id="divide">÷</div>
+                    <div class="key" id="infinity" style="font-size: 25px ;">∞</div>
+                    <div class="key" id="cot">Cot</div>
+                    <div class="key" id="integral">∫</div>
+                    <div class="key" id="factorial">!</div>
+                    <div class="key" id="s-root" style="font-size: 20px ;">√</div>
+                </div>
+                <div class="close-left-input-side" id="close-left-input-side">
+                    <img src="{% static 'ModernWGC_ui/css/SVG/arrow.svg' %}" alt="" id="arrow-svg">
+                </div>
+                <div class="save-graph" id="save-graph"></div>
+            </div>
+
+            <span class="crimson-line"></span>
+
+            <div class="input-box">
+                <input type="text" class="input" id="input_field">
+            </div>
+            <button class="calculate" id="calc-btn">Calculate</button>
+            <div class="loader">
+                <div class="progress"></div>
+            </div>
+        </div>
+
+        <div class="right-graph-side" id="right-graph-side"></div>
+    </div>
+
+    <div class="page-loading" id="page-loading">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <script defer src="{% static 'ModernWGC_ui/js/Vendor.js' %}"></script>
+    <script defer src="{% static 'ModernWGC_ui/js/App.js' %}"></script>
+    <script defer src="{% static 'ModernWGC_ui/js/graphRequest.js' %}"></script>
+    <script defer src="{% static 'ModernWGC_ui/js/syntaxChecker.js' %}"></script>
 </body>
 </html>

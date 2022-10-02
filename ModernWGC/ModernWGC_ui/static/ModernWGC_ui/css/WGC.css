@@ -1,0 +1,574 @@
+/* [F] Fonts */
+@font-face {
+    src: url(./Fonts/Josefin-Sans/JosefinSans-Bold.ttf);
+    font-family: Josefin-Bold;
+}
+@font-face {
+    src: url(./Fonts/Josefin-Sans/JosefinSans-Regular.ttf);
+    font-family: Josefin-Regular;
+}
+@font-face {
+    src: url(./Fonts/Roboto/RobotoMono-Medium.ttf);
+    font-family: Roboto-Medium;
+}
+
+/* [1] Global Style */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: black;
+    background-color: rgb(19, 23, 26);
+    /* overflow: hidden; */
+}
+
+
+/* [2] Page loading Style */
+.page-loading{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 44.8px;
+    height: 44.8px;
+    animation: page-loading 2s infinite ease;
+    transform-style: preserve-3d;
+}
+ 
+.spinner > div {
+    background-color: rgb(220, 20, 60, 0.2);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    border: 2.2px solid crimson;
+}
+ 
+.spinner div:nth-of-type(1) {
+    transform: translateZ(-22.4px) rotateY(180deg);
+}
+ 
+.spinner div:nth-of-type(2) {
+    transform: rotateY(-270deg) translateX(50%);
+    transform-origin: top right;
+}
+ 
+.spinner div:nth-of-type(3) {
+    transform: rotateY(270deg) translateX(-50%);
+    transform-origin: center left;
+}
+ 
+.spinner div:nth-of-type(4) {
+    transform: rotateX(90deg) translateY(-50%);
+    transform-origin: top center;
+}
+ 
+.spinner div:nth-of-type(5) {
+    transform: rotateX(-90deg) translateY(50%);
+    transform-origin: bottom center;
+}
+ 
+.spinner div:nth-of-type(6) {
+    transform: translateZ(22.4px);
+}
+ 
+.hide-page-loading{
+    transition: opacity 150ms ease-in-out;
+    opacity: 0;
+}
+
+/* [3] Nav-Bar Style */
+.nav-bar{
+    background-color: #11171f;
+    width: 100%;
+    height: 55px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    filter: blur(0.1px);
+    /* border-bottom: 1px rgb(85, 85, 85) solid; */
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.nav-bar .title{
+    font-family: Josefin-Bold;
+    font-size: 24px;
+    color: #979A9A;
+}
+
+.nav-bar .title a{
+    color: #D0D3D4;
+}
+
+.nav-bar .right-side{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.switch-theme{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    height: 20px;
+    width: 52px;
+    /* border-radius: 16px; */
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    border: 2px solid #7a7a7a;
+    background: #dc143c;
+    transition: all .2s ease;
+    transition-delay: 170ms;
+}
+
+.switch-theme::after{
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 13px;
+    height: 14px;
+    /* border-radius: 50%; */
+    background: #17202A;
+    box-shadow: 0 1px 2px rgb(44 44 44 / 20%);
+    transition: all 0.2s cubic-bezier(0.5, 0.1, 0.75, 1.35);
+}
+
+.switch-theme:checked::after{
+    transform: translatex(34px);
+    background-color: white;
+}
+
+.switch-theme:checked{
+    background: #17202A
+}
+
+
+.switch-theme:focus{
+    outline: 0;
+}
+
+.nav-bar .about{
+    font-family: Josefin-Regular;
+    font-weight: 500;
+    background-color: #515A5A;
+    color: black;
+    padding: 7px 15px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.nav-bar .about:hover{
+    background-color: #979A9A;
+}
+
+
+
+/* [4] Main-section Style */
+.main-section{
+    height: calc(100vh - 55px);
+    display: flex;
+}
+
+
+
+/* [5] Left-input-side Style */
+.left-input-side{
+    /* used to be height: 100%, but now to stop the arrow from overlapping with the nav-bar.. this was changed to min-height */
+    min-height: 350px; 
+    position: relative;
+    border-right: 1px rgb(177, 177, 177, 0.4) solid;
+    /* border-top: 1px rgb(220, 20, 60, 0.5) solid; */
+    background-color: rgb(0, 0, 0, 0.9);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    /* min-width: 341px; */
+    /* - */
+    display: flex;
+    flex-direction: column;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in;
+    width: 350px;
+    min-width: 350px;
+    z-index: 2;
+}
+
+.key-pad{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 190px;
+    min-height: 190px;
+    /* border: 1px red solid; */
+    padding: 25px 25px;
+    justify-content: center;
+    align-items: center;
+    transition: 500ms;
+    transition-delay: 200ms;
+}
+
+.key-pad-on-closed{
+    margin-top: 700px;
+}
+
+.key-pad .key-pad-rows{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.key{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Roboto-Medium;
+    border: 1px rgb(146, 146, 146, 0.3) solid;
+    width: 43px;
+    height: 35px;
+    background-color: black;
+    color: #6d6d6d;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: 150ms;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.key:hover{
+    background-color: #2c2c2c;
+    color: white;
+}
+
+
+.crimson-line{
+    width: 70%;
+    min-height: 1px;
+    background-color: rgb(255, 255, 255, 0.3);
+    align-self: center;
+    margin-bottom: 25px;
+}
+
+.input-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    position: relative;
+}
+
+.input-box input{
+    font-family: Roboto-Medium;
+    font-size: 15px;
+    width: 90%;
+    height: 40px;
+    border: 2px rgb(220, 20, 60, 0.4) solid;
+    background-color: rgb(27, 27, 27);
+    text-indent: 50px;
+    color: white;
+    background-image: url("./SVG/calculator.svg");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: 5px center;
+    outline: none;
+    transition: 300ms;
+    z-index: 2;
+}
+
+.input-box input:focus{
+    border: 2px rgb(220, 20, 60, 0.4) solid;
+}
+
+.input-box input:hover{
+    background-color: rgb(12, 12, 12);
+    border: 2px rgb(220, 20, 60, 0.4) solid;
+}
+
+.calculate{
+    font-family: Roboto-Medium;
+    width: 50%;
+    height: 35px;
+    color: white;
+    background-color: black;
+    border: 1px rgb(104, 104, 104) solid;
+    align-self: center;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 300ms;
+    min-height: 35px;
+}
+
+.calculate:hover{
+    background-color: #2c2c2c;
+    color: white;
+}
+
+.loader{
+    width: fit-content;
+    align-self: center;
+    margin-top: 200px;
+}
+.progress{
+    width: 100.8px;
+    height: 16.8px;
+    -webkit-mask: linear-gradient(90deg,#dc143c 70%,#0000 0) left/20% 100%;
+    background: linear-gradient(#dc143c 0 0) left/0% 100% no-repeat
+        gray;
+    animation: progress-422c3u 1200ms infinite steps(6);
+    display: none;
+}
+
+.show-pregress-bar{
+    display: block;
+}
+
+/* The button responsible for closing the left menu. */
+.close-left-input-side{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding-right: 3px;
+    background-color: rgba(34, 34, 34);
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    position: absolute;
+    right: -23px;
+    bottom: 25px;
+    border: 1px rgb(128, 128, 128, 0.0) solid;
+    cursor: pointer;
+    transition: 500ms;
+    z-index: 2;
+}
+
+.close-left-input-side:hover{
+    border: 1px rgb(220, 20, 60, 0.5) solid;
+}
+
+.close-left-input-side #arrow-svg{
+    width: 28px;
+    animation-duration: 5s;
+    animation-delay: 1s;
+}
+
+.close-left-section{
+    transform: translateX(-350px);
+    margin-right: -350px; 
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    /* Faced a lot of problems with this one. simply because the left section was not given a widht, it was on Flex:1 without withd */
+    /* This will hinder this what this block is trying to do.. which is hiding the input section and giving the extra space to the graph side */
+    /* To fix it, simply remove the flex:1 after finding out the deisred width and replace it with width:desired */
+}
+
+.save-graph{
+    background-image: url("./SVG/save.svg");
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: rgb(179, 179, 179);
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: -72px;
+    top: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(22, 22, 22);
+    border: 1px rgb(128, 128, 128, 0.2) solid;
+    transition: 400ms;
+    transition-delay: 10ms;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.save-graph:hover{
+    border: 1px rgb(220, 20, 60, 0.5) solid;
+}
+
+.save-graph-on-close{
+    /* right: 200px; */
+}
+
+/* [6] Left-input-side Style */
+.right-graph-side{
+    height: 100%;
+    min-height: 350px;
+    flex: 3;
+    background-color: rgb(19, 23, 26);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    overflow: hidden;
+    opacity: 0.8;
+}
+
+/* [A] Animations */
+
+@keyframes flip_arrow_close {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    20%{
+        transform: rotate(30deg);
+    }
+    
+    30%{
+        transform: rotate(60deg);
+    }
+
+    40%{
+        transform: rotate(80deg);
+    }
+
+    50%{
+        transform: rotate(100deg);
+    }
+    
+    60%{
+        transform: rotate(120deg);
+    }
+
+    70%{
+        transform: rotate(130deg);
+    }
+
+    80%{
+        transform: rotate(150deg);
+    }
+
+    90%{
+        transform: rotate(160deg);
+    }
+    
+    100%{
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes flip_arrow_open{
+    0%{
+        transform: rotate(180deg);
+    }
+
+    20%{
+        transform: rotate(160deg);
+    }
+    
+    30%{
+        transform: rotate(150deg);
+    }
+
+    40%{
+        transform: rotate(130deg);
+    }
+
+    50%{
+        transform: rotate(120deg);
+    }
+    
+    60%{
+        transform: rotate(100deg);
+    }
+
+    70%{
+        transform: rotate(80deg);
+    }
+
+    80%{
+        transform: rotate(60deg);
+    }
+
+    90%{
+        transform: rotate(30deg);
+    }
+    
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes close_input_section {
+    
+    0%{
+        margin-left: 0;
+    }
+
+    30%{
+        margin-left: -100px;
+    }
+
+    60%{
+        margin-left: -200px;
+    }
+
+    80%{
+        margin-left: -300px;
+    }
+
+    100%{
+        /* margin-left: calc(100vw + -359); */
+    }
+}
+
+@keyframes progress-422c3u {
+    100% {
+       background-size: 120% 100%;
+    }
+}
+
+@keyframes page-loading {
+    0% {
+        transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    }
+
+    50% {
+        transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    }
+
+    100% {
+        transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    }
+}
+
+
+
+
+
+
+/* 
+Block List:
+[1] Global Style
+[2] Page loading Style
+[3] Nav-bar Style
+[4] Main-section Style
+[5] Left-input-side Style
+[6] Right-graph-side Style
+
+[F] Fonts
+[A] Animations
+*/
